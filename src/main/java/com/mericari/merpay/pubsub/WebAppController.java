@@ -1,16 +1,10 @@
-package hello;
+package com.mericari.merpay.pubsub;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
-import com.google.pubsub.v1.PubsubMessage;
-import hello.PubSubApplication.PubsubOutboundGateway;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;
-import org.springframework.cloud.gcp.pubsub.integration.inbound.PubSubInboundChannelAdapter;
-import org.springframework.cloud.gcp.pubsub.support.AcknowledgeablePubsubMessage;
-import org.springframework.cloud.gcp.pubsub.support.BasicAcknowledgeablePubsubMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +33,4 @@ public class WebAppController {
     model.addAttribute("msg", "get msg");
     return "hello";
   }
-
-
 }
