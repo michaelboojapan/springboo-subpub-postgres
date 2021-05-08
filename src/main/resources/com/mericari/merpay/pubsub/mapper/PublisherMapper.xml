@@ -19,7 +19,7 @@
     pub_id=#{pubId}
   </select>
 
-  <insert id="insert" parameterType="com.mericari.merpay.pubsub.dto.Topic">
+  <insert id="registerTopic" parameterType="com.mericari.merpay.pubsub.dto.Topic">
     INSERT INTO
     topic(
     pub_id,
@@ -30,4 +30,14 @@
     #{topicName}
     )
   </insert>
+
+  <select id="selectMesg" resultType="com.mericari.merpay.pubsub.dto.Mesg">
+    SELECT
+    msg_id as msgId,
+    msg_content as msgContent
+    FROM
+    message
+    WHERE
+    topic_id=#{topicId}
+  </select>
 </mapper>

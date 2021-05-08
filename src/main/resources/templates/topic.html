@@ -26,7 +26,7 @@ body {
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">TOPIC</h1>
+    <h1 class="display-3">TOPIC DETAIL</h1>
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#registerTopicModal">REGISTER TOPIC</button>
     <div th:replace="modal/registerTopic"></div>
   </div>
@@ -53,7 +53,7 @@ body {
           <td th:text="${topic.topicId}"></td>
           <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/pubDetail?pubId=' + ${topic.topicId} + '\')' ">Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicId=' + ${topic.topicId} + '\')' ">Topic Detail</button>
           </td>
         </tr>
         </tbody>
@@ -78,7 +78,7 @@ body {
           <td th:text="${topic.topicId}"></td>
           <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/pubDetail?pubId=' + ${topic.topicId} + '\')' ">Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicId=' + ${topic.topicId} + '\')' ">Topic Detail</button>
           </td>
         </tr>
         </tbody>

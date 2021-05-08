@@ -1,5 +1,6 @@
 package com.mericari.merpay.pubsub.mapper;
 
+import com.mericari.merpay.pubsub.dto.Mesg;
 import com.mericari.merpay.pubsub.dto.Publisher;
 import com.mericari.merpay.pubsub.dto.Topic;
 import java.util.List;
@@ -12,5 +13,9 @@ public interface PublisherMapper {
 
   List<Topic> selectTopic(String pubId);
 
-  int registerTopic(Topic topic);
+  void registerTopic(Topic topic);
+
+  List<Mesg> selectMesg(String topicId);
+
+  void registerTopic(Mesg mesg);
 }

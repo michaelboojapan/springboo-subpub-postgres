@@ -1,5 +1,6 @@
 package com.mericari.merpay.pubsub.service;
 
+import com.mericari.merpay.pubsub.dto.Mesg;
 import com.mericari.merpay.pubsub.dto.Publisher;
 import com.mericari.merpay.pubsub.dto.Topic;
 import com.mericari.merpay.pubsub.mapper.PublisherMapper;
@@ -23,9 +24,18 @@ public class PublisherService {
     return mapper.selectTopic(pubId);
   }
 
-  public int registerTopic(Topic topic) {
+  public void registerTopic(Topic topic) {
 
-    return mapper.registerTopic(topic);
+    mapper.registerTopic(topic);
+  }
+
+
+  public List<Mesg> selectMesg(String topicId) {
+    return mapper.selectMesg(topicId);
+  }
+  public void publishMessage(Mesg mesg) {
+
+    mapper.registerTopic(mesg);
   }
 
 }

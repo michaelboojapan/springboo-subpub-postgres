@@ -1,5 +1,6 @@
 package com.mericari.merpay.pubsub.controller;
 
+import com.mericari.merpay.pubsub.dto.Mesg;
 import com.mericari.merpay.pubsub.dto.Publisher;
 import com.mericari.merpay.pubsub.dto.Topic;
 import com.mericari.merpay.pubsub.service.PublisherService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @EnableAutoConfiguration
@@ -43,10 +45,31 @@ public class PublisherController {
   }
 
   @PostMapping("/registerTopic")
-  public int registerTopic(@Validated @RequestBody Topic topic, Errors errors) {
+  public RedirectView registerTopic(Topic topic, Errors errors) {
     if (errors.hasErrors()) {
       throw new RuntimeException((Throwable) errors);
     }
-    return customerService.registerTopic(topic);
+    customerService.registerTopic(topic);
+
+    return new RedirectView("/topic?pubId=" + topic.getPubId());
+  }
+
+  @GetMapping("/mesg")
+  public String selectMesg(Model model, @RequestParam String topicId) {
+    List<Mesg> mesgs = customerService.selectMesg(topicId);
+    model.addAttribute("topicId", topicId);
+    model.addAttribute("mesgs", mesgs);
+    return "mesg";
+  }
+
+
+  @PostMapping("/publishMessage")
+  public RedirectView publishMessage(Mesg mesg, Errors errors) {
+    if (errors.hasErrors()) {
+      throw new RuntimeException((Throwable) errors);
+    }
+    customerService.publishMessage(mesg);
+
+    return new RedirectView("/mesg?topicId=" + mesg.getTopicId());
   }
 }
