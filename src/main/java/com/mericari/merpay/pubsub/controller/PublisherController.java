@@ -1,6 +1,7 @@
 package com.mericari.merpay.pubsub.controller;
 
 import com.mericari.merpay.pubsub.dto.Publisher;
+import com.mericari.merpay.pubsub.dto.Topic;
 import com.mericari.merpay.pubsub.service.PublisherService;
 import java.util.List;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
@@ -32,15 +34,19 @@ public class PublisherController {
     return "index";
   }
 
-  //  @PostMapping
-  //  public Publisher post(@Validated @RequestBody Publisher customer, Errors errors) {
-  //    // If the fields of requested customer object are invalid,
-  //    // throw Runtime Exception with validation errors.
-  //    // NOTE: You can set HTTP status code and return it instead of throwing error.
-  //    if (errors.hasErrors()) {
-  //      throw new RuntimeException((Throwable) errors);
-  //    }
-  //    // NOTE: You can also validate whether insertion succeeded or not here.
-  //    return customerService.register(customer);
-  //  }
+  @GetMapping("/topic")
+  public String selectTopic(Model model, @RequestParam String pubId) {
+    List<Topic> topics = customerService.selectTopic(pubId);
+    model.addAttribute("pubId", pubId);
+    model.addAttribute("topics", topics);
+    return "topic";
+  }
+
+  @PostMapping("/registerTopic")
+  public int registerTopic(@Validated @RequestBody Topic topic, Errors errors) {
+    if (errors.hasErrors()) {
+      throw new RuntimeException((Throwable) errors);
+    }
+    return customerService.registerTopic(topic);
+  }
 }

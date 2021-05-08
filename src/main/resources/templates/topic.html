@@ -19,16 +19,6 @@ body {
   margin-left: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
 </style>
 <body>
 
@@ -36,7 +26,9 @@ body {
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">PUB & SUB</h1>
+    <h1 class="display-3">TOPIC</h1>
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#registerTopicModal">REGISTER TOPIC</button>
+    <div th:replace="modal/registerTopic"></div>
   </div>
 </div>
 
@@ -56,12 +48,12 @@ body {
         </tr>
         </thead>
         <tbody>
-        <tr th:each="publisher, row : ${publishers}">
+        <tr th:each="topic, row : ${topics}">
           <td th:text="${row.count}"></td>
-          <td th:text="${publisher.pubId}"></td>
-          <td th:text="${publisher.pubName}"></td>
+          <td th:text="${topic.topicId}"></td>
+          <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/topic?pubId=' + ${publisher.pubId} + '\')' ">Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/pubDetail?pubId=' + ${topic.topicId} + '\')' ">Detail</button>
           </td>
         </tr>
         </tbody>
@@ -81,12 +73,12 @@ body {
         </tr>
         </thead>
         <tbody>
-        <tr th:each="publisher, row : ${publishers}">
+        <tr th:each="topic, row : ${topics}">
           <td th:text="${row.count}"></td>
-          <td th:text="${publisher.pubId}"></td>
-          <td th:text="${publisher.pubName}"></td>
+          <td th:text="${topic.topicId}"></td>
+          <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/topic?pubId=' + ${publisher.pubId} + '\')' ">Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/pubDetail?pubId=' + ${topic.topicId} + '\')' ">Detail</button>
           </td>
         </tr>
         </tbody>

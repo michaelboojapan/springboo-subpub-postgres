@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mericari.merpay.pubsub.mapper.PublisherMapper">
-  <select id="selectAll" parameterType="com.mericari.merpay.pubsub.dto.Publisher">
+  <select id="selectAll" resultType="com.mericari.merpay.pubsub.dto.Publisher">
     SELECT
-    pub_id,
-    pub_name
+    pub_id as pubId,
+    pub_name as pubName
     FROM
     publisher
   </select>
+
+  <select id="selectTopic" resultType="com.mericari.merpay.pubsub.dto.Topic">
+    SELECT
+    topic_id as topicId,
+    topic_name as topicName
+    FROM
+    topic
+    WHERE
+    pub_id=#{pubId}
+  </select>
+
+  <insert id="insert" parameterType="com.mericari.merpay.pubsub.dto.Topic">
+    INSERT INTO
+    topic(
+    pub_id,
+    topic_name
+    )
+    VALUES (
+    #{pubId},
+    #{topicName}
+    )
+  </insert>
 </mapper>

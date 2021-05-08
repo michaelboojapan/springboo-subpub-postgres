@@ -3,6 +3,8 @@ package com.mericari.merpay.pubsub.dto;
 import javax.validation.constraints.NotNull;
 
 public class Publisher {
+  public Publisher() {
+  }
 
   @NotNull
   private String pubId;

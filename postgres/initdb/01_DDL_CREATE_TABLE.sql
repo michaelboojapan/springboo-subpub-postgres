@@ -21,8 +21,15 @@ CREATE TABLE message (
     msg_content VARCHAR(128) NOT NULL
 );
 
+CREATE TABLE subscriber_topic (
+    sub_id VARCHAR(10) NOT NULL,
+    topic_id VARCHAR(10) NOT NULL,
+    PRIMARY KEY(sub_id, topic_id)
+);
+
 CREATE TABLE subscriber_msg (
     sub_id VARCHAR(10) NOT NULL,
-    msg_id VARCHAR(128) NOT NULL,
-    acked BOOLEAN NOT NULL
+    msg_id VARCHAR(10) NOT NULL,
+    acked BOOLEAN NOT NULL,
+    PRIMARY KEY(sub_id, msg_id)
 );
