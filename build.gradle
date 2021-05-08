@@ -16,14 +16,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	compile("org.springframework.boot:spring-boot-starter-web")
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
-
-
-
-//	compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.2.5.RELEASE")
-	compile("org.springframework.integration:spring-integration-core")
-	testCompile("org.springframework.boot:spring-boot-starter-test")
+	runtimeOnly 'org.postgresql:postgresql'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 bootRun {

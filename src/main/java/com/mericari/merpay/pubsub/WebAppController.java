@@ -19,18 +19,18 @@ public class WebAppController {
 
   @GetMapping("/")
   public String init() {
-    return "hello";
+    return "index";
   }
 
   @PostMapping("/publishmsg")
   public String publishmsg(Model model, @RequestParam("message") String message) {
     model.addAttribute("msg", "publish msg");
-    return "hello";
+    return "index";
   }
 
   @GetMapping("/getmsg")
   public String getmsg(Model model) {
     model.addAttribute("msg", "get msg");
-    return "hello";
+    return "index";
   }
 }
