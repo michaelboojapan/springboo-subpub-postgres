@@ -19,6 +19,10 @@ body {
   margin-left: 20px;
 }
 
+
+
+
+
 </style>
 <body>
 
@@ -54,7 +58,20 @@ body {
       </div>
     </div>
     <div class="col-sm">
-      One of three columnss
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col" th:text="ID"></th>
+          <th scope="col" th:text="NAME"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="publisher, row : ${publishers}">
+          <td class="chosen-reader-id" th:text="${publisher.pubId}"></td>
+          <td class="chosen-reader-name" th:text="${publisher.pubName}"></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
