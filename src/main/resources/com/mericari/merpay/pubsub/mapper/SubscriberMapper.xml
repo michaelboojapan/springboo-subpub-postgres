@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mericari.merpay.pubsub.mapper.SubscriberMapper">
+  <select id="selectSubscriptionTopic" resultType="com.mericari.merpay.pubsub.dto.Topic">
+    SELECT
+    topic.topic_id as topicId,
+    topic.topic_name as topicName
+    FROM
+    topic
+    LEFT JOIN
+    subscriber_topic
+    ON subscriber_topic.topic_id=topic.topic_id
+    WHERE
+    sub_id=#{subId}
+  </select>
+
+  <insert id="subscribeTopic" parameterType="com.mericari.merpay.pubsub.dto.Topic">
+    INSERT INTO
+    subscriber_topic(
+    sub_id,
+    topic_id
+    )
+    VALUES (
+    #{subId},
+    #{topicId}
+    )
+  </insert>
+</mapper>

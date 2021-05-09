@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mericari.merpay.pubsub.mapper.PublisherMapper">
-  <select id="selectAll" resultType="com.mericari.merpay.pubsub.dto.Publisher">
+  <select id="selectAllPublisher" resultType="com.mericari.merpay.pubsub.dto.Publisher">
     SELECT
     pub_id as pubId,
     pub_name as pubName
     FROM
     publisher
+  </select>
+
+
+  <select id="selectAllSubscriber" resultType="com.mericari.merpay.pubsub.dto.Subscriber">
+    SELECT
+    sub_id as subId,
+    sub_name as subName
+    FROM
+    subscriber
   </select>
 
   <select id="selectTopic" resultType="com.mericari.merpay.pubsub.dto.Topic">
@@ -46,9 +55,6 @@
     <selectKey keyProperty="msgId" order="BEFORE" resultType="int">
       SELECT CAST(nextval('message_id_seq') as INTEGER)
     </selectKey>
-    {call
-    declare
-    begin
 
     INSERT INTO
     message(
@@ -62,6 +68,7 @@
     #{msgContent}
     );
 
+
     INSERT INTO
     subscriber_msg (
     sub_id,
@@ -74,9 +81,10 @@
     subscriber_topic
     WHERE
     topic_id=#{topicId}
-    );
-    end
-    }
+    )
+    ;
+
+
 
 
   </insert>

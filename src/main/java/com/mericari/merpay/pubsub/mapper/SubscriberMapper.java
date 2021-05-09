@@ -8,17 +8,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface PublisherMapper {
+public interface SubscriberMapper {
 
-  List<Publisher> selectAllPublisher();
+  List<Topic> selectSubscriptionTopic(String subId);
 
-  List<Subscriber> selectAllSubscriber();
 
-  List<Topic> selectTopic(String pubId);
-
-  void registerTopic(Topic topic);
-
-  List<Mesg> selectMesg(String topicId);
-
-  void publishMessage(Mesg mesg);
+  void subscribeTopic(Topic topic);
 }

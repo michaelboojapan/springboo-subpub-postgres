@@ -19,16 +19,6 @@ body {
   margin-left: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
 </style>
 <body>
 
@@ -36,7 +26,9 @@ body {
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">PUB & SUB</h1>
+    <h1 class="display-3">SUBSCRIPTION TOPIC OF<span th:text="${subId}"></span></h1>
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#subscribeTopicModal">SUBSCRIBE TOPIC</button>
+    <div th:replace="modal/subscribeTopic"></div>
   </div>
 </div>
 
@@ -56,12 +48,12 @@ body {
         </tr>
         </thead>
         <tbody>
-        <tr th:each="publisher, row : ${publishers}">
+        <tr th:each="topic, row : ${topics}">
           <td th:text="${row.count}"></td>
-          <td th:text="${publisher.pubId}"></td>
-          <td th:text="${publisher.pubName}"></td>
+          <td th:text="${topic.topicId}"></td>
+          <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/topic?pubId=' + ${publisher.pubId} + '\')' ">Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicId=' + ${topic.topicId} + '\')' ">Topic Detail</button>
           </td>
         </tr>
         </tbody>
@@ -69,29 +61,7 @@ body {
     </div>
     <div class="col-md-2">
     </div>
-    <div class="col-md-5">
-      <h2>Subscriber</h2>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">ID</th>
-          <th scope="col">NAME</th>
-          <th scope="col">DETAIL</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="subscriber, row : ${subscribers}">
-          <td th:text="${row.count}"></td>
-          <td th:text="${subscriber.subId}"></td>
-          <td th:text="${subscriber.subName}"></td>
-          <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/subscriptionTopic?subId=' + ${subscriber.subId} + '\')' ">Detail</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+
   </div>
 
   <hr>

@@ -2,6 +2,7 @@ package com.mericari.merpay.pubsub.service;
 
 import com.mericari.merpay.pubsub.dto.Mesg;
 import com.mericari.merpay.pubsub.dto.Publisher;
+import com.mericari.merpay.pubsub.dto.Subscriber;
 import com.mericari.merpay.pubsub.dto.Topic;
 import com.mericari.merpay.pubsub.mapper.PublisherMapper;
 import java.util.List;
@@ -16,8 +17,11 @@ public class PublisherService {
     this.mapper = mapper;
   }
 
-  public List<Publisher> selectAll() {
-    return mapper.selectAll();
+  public List<Publisher> selectAllPublisher() {
+    return mapper.selectAllPublisher();
+  }
+  public List<Subscriber> selectAllSubscriber() {
+    return mapper.selectAllSubscriber();
   }
 
   public List<Topic> selectTopic(String pubId) {

@@ -2,6 +2,7 @@ package com.mericari.merpay.pubsub.controller;
 
 import com.mericari.merpay.pubsub.dto.Mesg;
 import com.mericari.merpay.pubsub.dto.Publisher;
+import com.mericari.merpay.pubsub.dto.Subscriber;
 import com.mericari.merpay.pubsub.dto.Topic;
 import com.mericari.merpay.pubsub.service.PublisherService;
 import java.util.List;
@@ -9,13 +10,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -23,22 +20,24 @@ import org.springframework.web.servlet.view.RedirectView;
 //@RequestMapping("/publisher")
 public class PublisherController {
 
-  private PublisherService customerService;
+  private PublisherService publisherService;
 
-  public PublisherController(PublisherService customerService) {
-    this.customerService = customerService;
+  public PublisherController(PublisherService publisherService) {
+    this.publisherService = publisherService;
   }
 
   @GetMapping("/")
   public String init(Model model) {
-    List<Publisher> publishers = customerService.selectAll();
+    List<Publisher> publishers = publisherService.selectAllPublisher();
+    List<Subscriber> subscribers = publisherService.selectAllSubscriber();
     model.addAttribute("publishers", publishers);
+    model.addAttribute("subscribers", subscribers);
     return "index";
   }
 
   @GetMapping("/topic")
   public String selectTopic(Model model, @RequestParam String pubId) {
-    List<Topic> topics = customerService.selectTopic(pubId);
+    List<Topic> topics = publisherService.selectTopic(pubId);
     model.addAttribute("pubId", pubId);
     model.addAttribute("topics", topics);
     return "topic";
@@ -49,14 +48,14 @@ public class PublisherController {
     if (errors.hasErrors()) {
       throw new RuntimeException((Throwable) errors);
     }
-    customerService.registerTopic(topic);
+    publisherService.registerTopic(topic);
 
     return new RedirectView("/topic?pubId=" + topic.getPubId());
   }
 
   @GetMapping("/mesg")
   public String selectMesg(Model model, @RequestParam String topicId) {
-    List<Mesg> mesgs = customerService.selectMesg(topicId);
+    List<Mesg> mesgs = publisherService.selectMesg(topicId);
     model.addAttribute("topicId", topicId);
     model.addAttribute("mesgs", mesgs);
     return "mesg";
@@ -68,7 +67,7 @@ public class PublisherController {
     if (errors.hasErrors()) {
       throw new RuntimeException((Throwable) errors);
     }
-    customerService.publishMessage(mesg);
+    publisherService.publishMessage(mesg);
 
     return new RedirectView("/mesg?topicId=" + mesg.getTopicId());
   }

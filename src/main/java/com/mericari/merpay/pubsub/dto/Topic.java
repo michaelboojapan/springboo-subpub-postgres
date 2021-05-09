@@ -8,6 +8,8 @@ public class Topic {
 
   private String pubId;
 
+  private String subId;
+
   private String topicId;
 
   @NotNull
@@ -35,5 +37,13 @@ public class Topic {
 
   public void setTopicName(String topicName) {
     this.topicName = topicName;
+  }
+
+  public String getSubId() {
+    return subId;
+  }
+
+  public void setSubId(String subId) {
+    this.subId = subId;
   }
 }
