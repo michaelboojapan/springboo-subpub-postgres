@@ -35,7 +35,7 @@ public class PublisherService {
   }
   public void publishMessage(Mesg mesg) {
 
-    mapper.registerTopic(mesg);
+    mapper.publishMessage(mesg);
   }
 
 }

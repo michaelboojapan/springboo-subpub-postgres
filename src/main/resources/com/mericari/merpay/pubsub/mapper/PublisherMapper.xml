@@ -40,4 +40,25 @@
     WHERE
     topic_id=#{topicId}
   </select>
+
+
+  <insert id="publishMessage" parameterType="com.mericari.merpay.pubsub.dto.Mesg">
+    <selectKey keyProperty="new_msgId" order="BEFORE" resultType="java.lang.Integer">
+      SELECT select nextval('message_id_seq')
+    </selectKey>
+
+    INSERT INTO
+    message(
+    msg_id,
+    topic_id,
+    msg_content
+    )
+    VALUES (
+    #{new_msgId},
+    #{topicId},
+    #{msgContent}
+    )
+
+
+  </insert>
 </mapper>

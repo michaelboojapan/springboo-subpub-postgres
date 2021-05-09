@@ -15,11 +15,13 @@ CREATE TABLE topic (
     topic_name VARCHAR(50) NOT NULL
 );
 
+CREATE SEQUENCE message_id_seq;
 CREATE TABLE message (
-    msg_id VARCHAR(10) PRIMARY KEY,
+    msg_id VARCHAR(10) DEFAULT nextval('message_id_seq') PRIMARY KEY,
     topic_id VARCHAR(10),
     msg_content VARCHAR(128) NOT NULL
 );
+ALTER SEQUENCE message_id_seq OWNED BY message.msg_id;
 
 CREATE TABLE subscriber_topic (
     sub_id VARCHAR(10) NOT NULL,

@@ -17,5 +17,5 @@ public interface PublisherMapper {
 
   List<Mesg> selectMesg(String topicId);
 
-  void registerTopic(Mesg mesg);
+  void publishMessage(Mesg mesg);
 }
