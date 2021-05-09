@@ -16,7 +16,7 @@ public class SubscriberService {
     this.mapper = mapper;
   }
 
-  public List<Topic> selectSubscriptionTopic(String subId) {
+  public List<Topic> selectSubscriptionTopic(int subId) {
     return mapper.selectSubscriptionTopic(subId);
   }
   public void subscribeTopic(Topic topic) {

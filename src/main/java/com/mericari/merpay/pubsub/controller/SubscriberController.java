@@ -28,7 +28,7 @@ public class SubscriberController {
 
 
   @GetMapping("/subscriptionTopic")
-  public String selectTopic(Model model, @RequestParam String subId) {
+  public String selectTopic(Model model, @RequestParam int subId) {
     List<Topic> topics = subscriberService.selectSubscriptionTopic(subId);
     model.addAttribute("subId", subId);
     model.addAttribute("topics", topics);

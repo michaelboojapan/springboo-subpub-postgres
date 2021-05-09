@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SubscriberMapper {
 
-  List<Topic> selectSubscriptionTopic(String subId);
+  List<Topic> selectSubscriptionTopic(int subId);
 
 
   void subscribeTopic(Topic topic);

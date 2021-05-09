@@ -7,7 +7,7 @@ public class Mesg {
 
   private int msgId;
 
-  private String topicId;
+  private int topicId;
 
   private String msgContent;
 
@@ -19,11 +19,11 @@ public class Mesg {
     this.msgId = msgId;
   }
 
-  public String getTopicId() {
+  public int getTopicId() {
     return topicId;
   }
 
-  public void setTopicId(String topicId) {
+  public void setTopicId(int topicId) {
     this.topicId = topicId;
   }
 

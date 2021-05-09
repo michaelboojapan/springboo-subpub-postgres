@@ -14,7 +14,7 @@ public interface PublisherMapper {
 
   List<Subscriber> selectAllSubscriber();
 
-  List<Topic> selectTopic(String pubId);
+  List<Topic> selectTopic(int pubId);
 
   void registerTopic(Topic topic);
 

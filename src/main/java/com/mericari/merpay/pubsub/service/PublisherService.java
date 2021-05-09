@@ -24,7 +24,7 @@ public class PublisherService {
     return mapper.selectAllSubscriber();
   }
 
-  public List<Topic> selectTopic(String pubId) {
+  public List<Topic> selectTopic(int pubId) {
     return mapper.selectTopic(pubId);
   }
 

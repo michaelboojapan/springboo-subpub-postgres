@@ -6,17 +6,15 @@ public class Publisher {
   public Publisher() {
   }
 
-  @NotNull
-  private String pubId;
+  private int pubId;
 
-  @NotNull
   private String pubName;
 
-  public String getPubId() {
+  public int getPubId() {
     return pubId;
   }
 
-  public void setPubId(String pubId) {
+  public void setPubId(int pubId) {
     this.pubId = pubId;
   }
 

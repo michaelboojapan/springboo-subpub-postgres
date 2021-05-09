@@ -36,7 +36,7 @@ public class PublisherController {
   }
 
   @GetMapping("/topic")
-  public String selectTopic(Model model, @RequestParam String pubId) {
+  public String selectTopic(Model model, @RequestParam int pubId) {
     List<Topic> topics = publisherService.selectTopic(pubId);
     model.addAttribute("pubId", pubId);
     model.addAttribute("topics", topics);

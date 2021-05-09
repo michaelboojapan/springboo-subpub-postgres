@@ -6,17 +6,15 @@ public class Subscriber {
   public Subscriber() {
   }
 
-  @NotNull
-  private String subId;
+  private int subId;
 
-  @NotNull
   private String subName;
 
-  public String getSubId() {
+  public int getSubId() {
     return subId;
   }
 
-  public void setSubId(String subId) {
+  public void setSubId(int subId) {
     this.subId = subId;
   }
 
