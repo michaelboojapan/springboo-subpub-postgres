@@ -58,10 +58,9 @@ body {
         <tbody>
         <tr th:each="publisher, row : ${publishers}">
           <td th:text="${row.count}"></td>
-          <td th:text="${publisher.pubId}"></td>
           <td th:text="${publisher.pubName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/topic?pubId=' + ${publisher.pubId} + '\')' ">Publisher Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/topic?pubName=' + ${publisher.pubName} + '\')' ">Publisher Detail</button>
           </td>
         </tr>
         </tbody>
@@ -75,7 +74,6 @@ body {
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">ID</th>
           <th scope="col">NAME</th>
           <th scope="col">DETAIL</th>
         </tr>
@@ -83,10 +81,9 @@ body {
         <tbody>
         <tr th:each="subscriber, row : ${subscribers}">
           <td th:text="${row.count}"></td>
-          <td th:text="${subscriber.subId}"></td>
           <td th:text="${subscriber.subName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/subscriptionTopic?subId=' + ${subscriber.subId} + '\')' ">Subscriber Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/subscriptionTopic?subName=' + ${subscriber.subName} + '\')' ">Subscriber Detail</button>
           </td>
         </tr>
         </tbody>

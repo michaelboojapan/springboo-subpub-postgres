@@ -3,7 +3,6 @@
 <mapper namespace="com.mericari.merpay.pubsub.mapper.PublisherMapper">
   <select id="selectAllPublisher" resultType="com.mericari.merpay.pubsub.dto.Publisher">
     SELECT
-    pub_id as pubId,
     pub_name as pubName
     FROM
     publisher
@@ -12,7 +11,6 @@
 
   <select id="selectAllSubscriber" resultType="com.mericari.merpay.pubsub.dto.Subscriber">
     SELECT
-    sub_id as subId,
     sub_name as subName
     FROM
     subscriber
@@ -20,22 +18,21 @@
 
   <select id="selectTopic" resultType="com.mericari.merpay.pubsub.dto.Topic">
     SELECT
-    topic_id as topicId,
     topic_name as topicName
     FROM
     topic
     WHERE
-    pub_id=#{pubId}
+    pub_name=#{pubName}
   </select>
 
   <insert id="registerTopic" parameterType="com.mericari.merpay.pubsub.dto.Topic">
     INSERT INTO
     topic(
-    pub_id,
+    pub_name,
     topic_name
     )
     VALUES (
-    #{pubId},
+    #{pubName},
     #{topicName}
     )
   </insert>
@@ -47,7 +44,7 @@
     FROM
     message
     WHERE
-    topic_id=#{topicId}
+    topic_name=#{topicName}
   </select>
 
 
@@ -59,12 +56,12 @@
     INSERT INTO
     message(
     msg_id,
-    topic_id,
+    topic_name,
     msg_content
     )
     VALUES (
     #{msgId},
-    #{topicId},
+    #{topicName},
     #{msgContent}
     );
 
@@ -80,7 +77,7 @@
     FROM
     subscriber_topic
     WHERE
-    topic_id=#{topicId}
+    topic_name=#{topicName}
     )
     ;
 

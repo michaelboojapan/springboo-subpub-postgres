@@ -16,11 +16,11 @@ public class SubscriberService {
     this.mapper = mapper;
   }
 
-  public List<Topic> selectSubscriptionTopic(int subId) {
-    return mapper.selectSubscriptionTopic(subId);
+  public List<Topic> selectSubscriptionTopic(String subName) {
+    return mapper.selectSubscriptionTopic(subName);
   }
-  public void subscribeTopic(Topic topic) {
 
+  public void subscribeTopic(Topic topic) {
     mapper.subscribeTopic(topic);
   }
  

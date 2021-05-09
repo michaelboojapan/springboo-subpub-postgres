@@ -26,7 +26,7 @@ body {
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">SUBSCRIPTION TOPIC OF<span th:text="${subId}"></span></h1>
+    <h1 class="display-3">SUBSCRIPTION TOPIC OF<span th:text="${subName}"></span></h1>
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#subscribeTopicModal">SUBSCRIBE TOPIC</button>
     <div th:replace="modal/subscribeTopic"></div>
   </div>
@@ -50,10 +50,9 @@ body {
         <tbody>
         <tr th:each="topic, row : ${topics}">
           <td th:text="${row.count}"></td>
-          <td th:text="${topic.topicId}"></td>
           <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicId=' + ${topic.topicId} + '\')' ">Topic Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicName=' + ${topic.topicName} + '\')' ">Topic Detail</button>
           </td>
         </tr>
         </tbody>

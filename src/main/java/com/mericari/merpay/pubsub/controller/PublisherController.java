@@ -36,9 +36,9 @@ public class PublisherController {
   }
 
   @GetMapping("/topic")
-  public String selectTopic(Model model, @RequestParam int pubId) {
-    List<Topic> topics = publisherService.selectTopic(pubId);
-    model.addAttribute("pubId", pubId);
+  public String selectTopic(Model model, @RequestParam String pubName) {
+    List<Topic> topics = publisherService.selectTopic(pubName);
+    model.addAttribute("pubName", pubName);
     model.addAttribute("topics", topics);
     return "topic";
   }
@@ -50,13 +50,13 @@ public class PublisherController {
     }
     publisherService.registerTopic(topic);
 
-    return new RedirectView("/topic?pubId=" + topic.getPubId());
+    return new RedirectView("/topic?pubName=" + topic.getPubName());
   }
 
   @GetMapping("/mesg")
-  public String selectMesg(Model model, @RequestParam String topicId) {
-    List<Mesg> mesgs = publisherService.selectMesg(topicId);
-    model.addAttribute("topicId", topicId);
+  public String selectMesg(Model model, @RequestParam String topicName) {
+    List<Mesg> mesgs = publisherService.selectMesg(topicName);
+    model.addAttribute("topicName", topicName);
     model.addAttribute("mesgs", mesgs);
     return "mesg";
   }
@@ -69,6 +69,6 @@ public class PublisherController {
     }
     publisherService.publishMessage(mesg);
 
-    return new RedirectView("/mesg?topicId=" + mesg.getTopicId());
+    return new RedirectView("/mesg?topicName=" + mesg.getTopicName());
   }
 }

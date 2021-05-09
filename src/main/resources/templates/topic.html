@@ -19,6 +19,7 @@ body {
   margin-left: 20px;
 }
 
+
 </style>
 <body>
 
@@ -42,7 +43,6 @@ body {
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">ID</th>
           <th scope="col">NAME</th>
           <th scope="col">DETAIL</th>
         </tr>
@@ -50,10 +50,9 @@ body {
         <tbody>
         <tr th:each="topic, row : ${topics}">
           <td th:text="${row.count}"></td>
-          <td th:text="${topic.topicId}"></td>
           <td th:text="${topic.topicName}"></td>
           <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicId=' + ${topic.topicId} + '\')' ">Topic Detail</button>
+            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicName=' + ${topic.topicName} + '\')' ">Topic Messages</button>
           </td>
         </tr>
         </tbody>
@@ -62,27 +61,7 @@ body {
     <div class="col-md-2">
     </div>
     <div class="col-md-5">
-      <h2>Subscriber</h2>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">ID</th>
-          <th scope="col">NAME</th>
-          <th scope="col">DETAIL</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="topic, row : ${topics}">
-          <td th:text="${row.count}"></td>
-          <td th:text="${topic.topicId}"></td>
-          <td th:text="${topic.topicName}"></td>
-          <td>
-            <button type="button" class="btn btn-primary" th:attr=" onclick='window.open(\'/mesg?topicId=' + ${topic.topicId} + '\')' ">Topic Detail</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+
     </div>
   </div>
 
@@ -90,55 +69,6 @@ body {
 
 </div> <!-- /container -->
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div name="formDiv">
-        <h3 class="s-btn">publish message</h3>
-        <form action="/publishMessage" method="post">
-          <div class="form-check">
-            <input type="text" class="form-control" id="message" name="message" placeholder="INPUT MSG!">
-          </div>
-          <div class="s-btn">
-            <button type="submit" class="btn btn-primary">Publish</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div name="formDiv">
-        <h3 class="s-btn">publish message</h3>
-        <form action="/getMessage" method="get">
-          <div th:text="${msg}"></div>
-          <div class="form-check">
-            <input type="text" class="form-control" id="subscribe" name="message" placeholder="INPUT MSG!">
-
-          </div>
-          <div class="s-btn">
-            <button type="submit" class="btn btn-primary">GET</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="col-sm">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col" th:text="ID"></th>
-          <th scope="col" th:text="NAME"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="publisher, row : ${publishers}">
-          <td class="chosen-reader-id" th:text="${publisher.pubId}"></td>
-          <td class="chosen-reader-name" th:text="${publisher.pubName}"></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

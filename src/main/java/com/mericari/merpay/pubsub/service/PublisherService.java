@@ -20,23 +20,23 @@ public class PublisherService {
   public List<Publisher> selectAllPublisher() {
     return mapper.selectAllPublisher();
   }
+
   public List<Subscriber> selectAllSubscriber() {
     return mapper.selectAllSubscriber();
   }
 
-  public List<Topic> selectTopic(int pubId) {
-    return mapper.selectTopic(pubId);
+  public List<Topic> selectTopic(String pubName) {
+    return mapper.selectTopic(pubName);
   }
 
   public void registerTopic(Topic topic) {
-
     mapper.registerTopic(topic);
   }
 
-
-  public List<Mesg> selectMesg(String topicId) {
-    return mapper.selectMesg(topicId);
+  public List<Mesg> selectMesg(String topicName) {
+    return mapper.selectMesg(topicName);
   }
+
   public void publishMessage(Mesg mesg) {
 
     mapper.publishMessage(mesg);

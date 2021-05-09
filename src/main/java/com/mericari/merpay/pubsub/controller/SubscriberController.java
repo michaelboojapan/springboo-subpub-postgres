@@ -28,9 +28,9 @@ public class SubscriberController {
 
 
   @GetMapping("/subscriptionTopic")
-  public String selectTopic(Model model, @RequestParam int subId) {
-    List<Topic> topics = subscriberService.selectSubscriptionTopic(subId);
-    model.addAttribute("subId", subId);
+  public String selectTopic(Model model, @RequestParam String subName) {
+    List<Topic> topics = subscriberService.selectSubscriptionTopic(subName);
+    model.addAttribute("subName", subName);
     model.addAttribute("topics", topics);
     return "subscription-topic";
   }
@@ -42,16 +42,9 @@ public class SubscriberController {
     }
     subscriberService.subscribeTopic(topic);
 
-    return new RedirectView("/subscription-topic?subId=" + topic.getSubId());
+    return new RedirectView("/subscription-topic?subName=" + topic.getSubName());
   }
-  //
-  //  @GetMapping("/mesg")
-  //  public String selectMesg(Model model, @RequestParam String topicId) {
-  //    List<Mesg> mesgs = subscriberService.selectMesg(topicId);
-  //    model.addAttribute("topicId", topicId);
-  //    model.addAttribute("mesgs", mesgs);
-  //    return "mesg";
-  //  }
+
   //
   //
   //  @PostMapping("/publishMessage")

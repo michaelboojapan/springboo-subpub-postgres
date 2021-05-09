@@ -14,11 +14,11 @@ public interface PublisherMapper {
 
   List<Subscriber> selectAllSubscriber();
 
-  List<Topic> selectTopic(int pubId);
+  List<Topic> selectTopic(String pubName);
 
   void registerTopic(Topic topic);
 
-  List<Mesg> selectMesg(String topicId);
+  List<Mesg> selectMesg(String topicName);
 
   void publishMessage(Mesg mesg);
 }

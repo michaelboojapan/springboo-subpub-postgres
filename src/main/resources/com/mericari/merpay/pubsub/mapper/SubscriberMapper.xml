@@ -3,26 +3,25 @@
 <mapper namespace="com.mericari.merpay.pubsub.mapper.SubscriberMapper">
   <select id="selectSubscriptionTopic" resultType="com.mericari.merpay.pubsub.dto.Topic">
     SELECT
-    topic.topic_id as topicId,
     topic.topic_name as topicName
     FROM
     topic
     LEFT JOIN
     subscriber_topic
-    ON subscriber_topic.topic_id=topic.topic_id
+    ON subscriber_topic.topic_name=topic.topic_name
     WHERE
-    sub_id=#{subId}
+    sub_id=#{subName}
   </select>
 
   <insert id="subscribeTopic" parameterType="com.mericari.merpay.pubsub.dto.Topic">
     INSERT INTO
     subscriber_topic(
-    sub_id,
-    topic_id
+    sub_name,
+    topic_name
     )
     VALUES (
-    #{subId},
-    #{topicId}
+    #{subName},
+    #{topicName}
     )
   </insert>
 </mapper>

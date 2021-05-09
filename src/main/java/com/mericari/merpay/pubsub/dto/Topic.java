@@ -6,36 +6,26 @@ public class Topic {
   public Topic() {
   }
 
-  private int pubId;
+  private String pubName;
 
-  private int subId;
-
-  private int topicId;
+  private String subName;
 
   private String topicName;
 
-  public int getPubId() {
-    return pubId;
+  public String getPubName() {
+    return pubName;
   }
 
-  public void setPubId(int pubId) {
-    this.pubId = pubId;
+  public void setPubName(String pubName) {
+    this.pubName = pubName;
   }
 
-  public int getSubId() {
-    return subId;
+  public String getSubName() {
+    return subName;
   }
 
-  public void setSubId(int subId) {
-    this.subId = subId;
-  }
-
-  public int getTopicId() {
-    return topicId;
-  }
-
-  public void setTopicId(int topicId) {
-    this.topicId = topicId;
+  public void setSubName(String subName) {
+    this.subName = subName;
   }
 
   public String getTopicName() {
