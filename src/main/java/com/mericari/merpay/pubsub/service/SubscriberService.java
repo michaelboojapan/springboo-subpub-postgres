@@ -19,9 +19,16 @@ public class SubscriberService {
   public List<Topic> selectSubscriptionTopic(String subName) {
     return mapper.selectSubscriptionTopic(subName);
   }
+  public List<Mesg> selectSubscriptionMesgs(String subName) {
+    return mapper.selectSubscriptionMesgs(subName);
+  }
 
   public void subscribeTopic(Topic topic) {
     mapper.subscribeTopic(topic);
+  }
+
+  public void acknowledge(int msgId, String subName) {
+    mapper.acknowledge(msgId, subName);
   }
  
 

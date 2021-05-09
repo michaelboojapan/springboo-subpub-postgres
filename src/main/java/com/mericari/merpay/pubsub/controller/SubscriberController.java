@@ -30,8 +30,10 @@ public class SubscriberController {
   @GetMapping("/subscriptionTopic")
   public String selectTopic(Model model, @RequestParam String subName) {
     List<Topic> topics = subscriberService.selectSubscriptionTopic(subName);
+    List<Mesg> mesgs = subscriberService.selectSubscriptionMesgs(subName);
     model.addAttribute("subName", subName);
     model.addAttribute("topics", topics);
+    model.addAttribute("mesgs", mesgs);
     return "subscription-topic";
   }
 
@@ -42,7 +44,13 @@ public class SubscriberController {
     }
     subscriberService.subscribeTopic(topic);
 
-    return new RedirectView("/subscription-topic?subName=" + topic.getSubName());
+    return new RedirectView("/subscriptionTopic?subName=" + topic.getSubName());
+  }
+
+  @GetMapping("/acknowledge")
+  public RedirectView acknowledge(int msgId, String subName) {
+    subscriberService.acknowledge(msgId, subName);
+    return new RedirectView("/subscriptionTopic?subName=" + subName);
   }
 
   //

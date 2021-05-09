@@ -12,6 +12,9 @@ public interface SubscriberMapper {
 
   List<Topic> selectSubscriptionTopic(String subName);
 
+  List<Mesg> selectSubscriptionMesgs(String subName);
 
   void subscribeTopic(Topic topic);
+
+  void acknowledge(int msgId, String subName);
 }

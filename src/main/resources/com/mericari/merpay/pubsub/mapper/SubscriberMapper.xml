@@ -10,7 +10,26 @@
     subscriber_topic
     ON subscriber_topic.topic_name=topic.topic_name
     WHERE
-    sub_id=#{subName}
+    sub_name=#{subName}
+  </select>
+
+  <select id="selectSubscriptionMesgs" resultType="com.mericari.merpay.pubsub.dto.Mesg">
+    SELECT
+    message.msg_id as msgId,
+    message.topic_name as topicName,
+    message.msg_content as msgContent
+    FROM
+    message
+    LEFT JOIN
+    subscriber_msg
+    ON subscriber_msg.msg_id=message.msg_id
+    WHERE
+    sub_name=#{subName}
+    AND
+    acked=False
+    order by
+    message.msg_id ASC
+    limit 1
   </select>
 
   <insert id="subscribeTopic" parameterType="com.mericari.merpay.pubsub.dto.Topic">
@@ -24,4 +43,15 @@
     #{topicName}
     )
   </insert>
+
+  <update id="acknowledge">
+    UPDATE
+    subscriber_msg
+    SET
+    acked=True
+    WHERE
+    msg_id=#{msgId}
+    AND
+    sub_name=#{subName}
+  </update>
 </mapper>

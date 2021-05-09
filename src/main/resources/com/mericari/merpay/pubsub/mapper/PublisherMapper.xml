@@ -67,13 +67,11 @@
 
 
     INSERT INTO
-    subscriber_msg (
-    sub_id,
-    msg_id)
-    VALUES(
+    subscriber_msg(
     SELECT
-    sub_id,
-    #{msgId}
+    sub_name,
+    #{msgId},
+    False
     FROM
     subscriber_topic
     WHERE
