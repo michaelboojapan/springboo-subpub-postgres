@@ -43,9 +43,12 @@
 
 
   <insert id="publishMessage" parameterType="com.mericari.merpay.pubsub.dto.Mesg">
-    <selectKey keyProperty="new_msgId" order="BEFORE" resultType="java.lang.Integer">
-      SELECT select nextval('message_id_seq')
+    <selectKey keyProperty="msgId" order="BEFORE" resultType="int">
+      SELECT CAST(nextval('message_id_seq') as INTEGER)
     </selectKey>
+    {call
+    declare
+    begin
 
     INSERT INTO
     message(
@@ -54,10 +57,26 @@
     msg_content
     )
     VALUES (
-    #{new_msgId},
+    #{msgId},
     #{topicId},
     #{msgContent}
-    )
+    );
+
+    INSERT INTO
+    subscriber_msg (
+    sub_id,
+    msg_id)
+    VALUES(
+    SELECT
+    sub_id,
+    #{msgId}
+    FROM
+    subscriber_topic
+    WHERE
+    topic_id=#{topicId}
+    );
+    end
+    }
 
 
   </insert>

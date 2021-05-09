@@ -5,17 +5,17 @@ public class Mesg {
   public Mesg() {
   }
 
-  private String msgId;
+  private int msgId;
 
   private String topicId;
 
   private String msgContent;
 
-  public String getMsgId() {
+  public int getMsgId() {
     return msgId;
   }
 
-  public void setMsgId(String msgId) {
+  public void setMsgId(int msgId) {
     this.msgId = msgId;
   }
 

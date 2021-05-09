@@ -17,12 +17,10 @@ CREATE TABLE topic (
 
 CREATE SEQUENCE message_id_seq;
 CREATE TABLE message (
-    msg_id VARCHAR(10) DEFAULT nextval('message_id_seq') PRIMARY KEY,
+    msg_id VARCHAR(10) PRIMARY KEY,
     topic_id VARCHAR(10),
     msg_content VARCHAR(128) NOT NULL
 );
-ALTER SEQUENCE message_id_seq OWNED BY message.msg_id;
-
 CREATE TABLE subscriber_topic (
     sub_id VARCHAR(10) NOT NULL,
     topic_id VARCHAR(10) NOT NULL,
@@ -32,6 +30,6 @@ CREATE TABLE subscriber_topic (
 CREATE TABLE subscriber_msg (
     sub_id VARCHAR(10) NOT NULL,
     msg_id VARCHAR(10) NOT NULL,
-    acked BOOLEAN NOT NULL,
+    acked BOOLEAN DEFAULT FALSE,
     PRIMARY KEY(sub_id, msg_id)
 );
