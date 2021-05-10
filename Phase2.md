@@ -21,6 +21,7 @@ please follow below manual to create new project.
 ## 2.2 Authenticating a service account
 You will create an account(maybe you already have one) and you have to authenticate it.
 https://cloud.google.com/docs/authentication/production
+
 There is GOOGLE_APPLICATION_CREDENTIALS key generated and please donwload it as Json file, it will be used in step 3.
 
 
@@ -34,6 +35,7 @@ As Spring Boot starter is provided to auto-configure the various required Pub/Su
 In phase2 we will upgrade it and use GCP Pub/Sub as the underlying message exchange mechanism.
 There is detail below, please check
 https://docs.spring.io/spring-cloud-gcp/docs/current/reference/html/index.html#cloud-pubsub
+
 https://cloud.google.com/pubsub/docs/spring
 
 
