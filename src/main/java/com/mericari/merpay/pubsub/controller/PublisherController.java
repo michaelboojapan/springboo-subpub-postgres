@@ -48,8 +48,12 @@ public class PublisherController {
     if (errors.hasErrors()) {
       throw new RuntimeException((Throwable) errors);
     }
-    publisherService.registerTopic(topic);
+    try {
+      publisherService.registerTopic(topic);
+    }
+    catch (Exception e){
 
+    }
     return new RedirectView("/topic?pubName=" + topic.getPubName());
   }
 

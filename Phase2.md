@@ -1,8 +1,8 @@
 # 1. Overview
-What I implemented was a pub/sub web application, which is handy to test the service we will build.
+What I implemented was a pub/sub web application, which is handy to test the service we will build.
 At phase2 we need to 
-1. Restructure this web application to RestAPI, and JSON as the transferring data. 
-2. Upgrade it to use Google Cloud Platform Sub/Pub.  
+1. Restructure this web application to RestAPI, and JSON as the transferring data.
+2. Upgrade it to use Google Cloud Platform Sub/Pub.
 
 
 # 2, Setting up Cloud Pub/Sub
@@ -16,8 +16,8 @@ And it has below advantages
 ## 2.1 Create a new project in the Cloud Platform Console
 please follow below manual to create new project.
 
- https://cloud.google.com/pubsub/docs/quickstart-console
- 
+https://cloud.google.com/pubsub/docs/quickstart-console
+
 ## 2.2 Authenticating a service account
 You will create an account(maybe you already have one) and you have to authenticate it.
 

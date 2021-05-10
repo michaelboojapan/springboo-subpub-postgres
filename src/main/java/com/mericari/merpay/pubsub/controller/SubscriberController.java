@@ -17,7 +17,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @EnableAutoConfiguration
-//@RequestMapping("/Subscriber")
 public class SubscriberController {
 
   private SubscriberService subscriberService;
@@ -52,16 +51,4 @@ public class SubscriberController {
     subscriberService.acknowledge(msgId, subName);
     return new RedirectView("/subscriptionTopic?subName=" + subName);
   }
-
-  //
-  //
-  //  @PostMapping("/publishMessage")
-  //  public RedirectView publishMessage(Mesg mesg, Errors errors) {
-  //    if (errors.hasErrors()) {
-  //      throw new RuntimeException((Throwable) errors);
-  //    }
-  //    subscriberService.publishMessage(mesg);
-  //
-  //    return new RedirectView("/mesg?topicId=" + mesg.getTopicId());
-  //  }
 }

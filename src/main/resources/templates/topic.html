@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 
-  <title>Spring Integration GCP sample</title>
+  <title>Mericai PUB SUB Test</title>
 
 </head>
 <style>
@@ -19,7 +19,6 @@ body {
   margin-left: 20px;
 }
 
-
 </style>
 <body>
 
@@ -27,7 +26,7 @@ body {
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">TOPIC DETAIL</h1>
+    <h1 class="display-3">TOPICS OF PUBLISHER <span th:text="${pubName}"></span></h1>
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#registerTopicModal">REGISTER TOPIC</button>
     <div th:replace="modal/registerTopic"></div>
   </div>
