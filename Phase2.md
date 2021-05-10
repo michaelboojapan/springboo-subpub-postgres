@@ -28,7 +28,8 @@ There is GOOGLE_APPLICATION_CREDENTIALS key generated and please donwload it as 
 # 3.Upgrade Existing Project
 ## 3.1 Implementing a RESTful API 
 Implementing a RESTful API based on a Web project of phase1.
-note: we could leave the web application as a test purpose.
+
+NOTE: we could leave the web application as a test purpose.
 
 ## 3.2 Upgrade Phase1 project
 As Spring Boot starter is provided to auto-configure the various required Pub/Sub components, we will use Java8 and spring boot as I already set up in phase 1.
