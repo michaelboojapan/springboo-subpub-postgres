@@ -11,6 +11,7 @@ DB: Postgres	13-alpine
 Docker:Docker	20.10.0, docker-compose	1.27.4
 
 
+
 # 2. Setup DB
 Run the command below in the root directory of our project
 $ docker-compose up
@@ -23,6 +24,17 @@ admin@example.com/admin
 After logging in, click 'Add New Server' to display the 'Create','Server'  and set the following items and press Save.
 
 ![1](https://user-images.githubusercontent.com/83208891/117642429-35d73480-b1c2-11eb-8f2e-ae8f591a5bc8.JPG)
+
+# 3.About the functions
+## 3.1 pub&sub overview page
+
+## 3.2 publisher topic regsitration page
+
+## 3.3 publisher publish message page
+
+## 3.4 topic subscribe page
+
+## 3.5 get message and ACK message page 
 
 
 
