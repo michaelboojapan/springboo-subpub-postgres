@@ -14,6 +14,7 @@ And it has below advantages
 
 
 ## 2.1 Create a new project in the Cloud Platform Console
+please follow below manual to create new project.
  https://cloud.google.com/pubsub/docs/quickstart-console
  
 ## 2.2 Authenticating a service account
