@@ -31,7 +31,7 @@ Implementing a RESTful API based on a Web project of phase1.
 
 NOTE: we could leave the web application as a test purpose.
 
-## 3.2 Upgrade Phase1 project
+## 3.2 Upgrade to use GCP pub/sub
 As Spring Boot starter is provided to auto-configure the various required Pub/Sub components, we will use Java8 and spring boot as I already set up in phase 1.
 In phase2 we will upgrade it and use GCP Pub/Sub as the underlying message exchange mechanism.
 There is detail below, please check
