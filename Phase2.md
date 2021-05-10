@@ -1,17 +1,18 @@
+1. Overview
 What I implemented was a pub/sub web application, which is handy to test the service we will build.
 At phase2 we need to 
 1) Restructure this web application to RestAPI and JSON as the transferring data. 
 2) Upgrade it to use Google Cloud Platform Sub/Pub.  
 
 
-1. Overview
+2, Setting up Cloud Pub/Sub
 Google Cloud Platform Pub/Sub is an asynchronous messaging service designed to be highly reliable and scalable.
 And it has below advantages
 -Synchronous, cross-zone message replication and per-message receipt tracking ensures reliable delivery at any scale
 -Auto-scaling and auto-provisioning with no partitions eliminates planning and ensures workloads are production ready from day one.
 -Filtering, dead-letter delivery, and exponential backoff without sacrificing scale help simplify your applications
 
-2, Setting up Cloud Pub/Sub
+
 2.1 Create a new project in the Cloud Platform Console
  https://cloud.google.com/pubsub/docs/quickstart-console
  
