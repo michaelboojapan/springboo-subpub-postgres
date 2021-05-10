@@ -25,7 +25,7 @@ After logging in, click 'Add New Server' to display the 'Create','Server'  and s
 
 ![1](https://user-images.githubusercontent.com/83208891/117642429-35d73480-b1c2-11eb-8f2e-ae8f591a5bc8.JPG)
 
-# 3.About the functions
+# 3.Functions
 ## 3.1 pub&sub overview page
 
 ## 3.2 publisher topic regsitration page
